@@ -38,7 +38,6 @@ export class GaragesMapComponent implements OnInit {
     this.markerLat = this.lat = this.garageGeometry['coordinates'][1];
     this.zoom = 14;
     this.garageTitle = this.garage['properties']['title'];
-    console.log(this.garageInfo);
   }
 
 }
