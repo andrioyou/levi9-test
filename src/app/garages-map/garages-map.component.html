@@ -1,7 +1,8 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
   <agm-marker *ngIf="markerLat && markerLng" [latitude]="markerLat" [longitude]="markerLng">
-    <agm-info-window [disableAutoPan]="true">
-      Hi, this is the content of the <strong>info window</strong>
+    <agm-info-window [disableAutoPan]="true" isOpen="true">
+      <h3 *ngIf="garageTitle">{{ garageTitle }}</h3>
+      <p *ngIf="garageInfo['PubDate']">{{ garageInfo['PubDate'] }}</p>
     </agm-info-window>
   </agm-marker>
 </agm-map>

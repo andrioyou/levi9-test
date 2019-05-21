@@ -1,13 +1,14 @@
 <div class="item">
   <div class="main">
-    <p>Name: {{ garageInfo['Name'] }} </p>
+    <p>Name: {{ garageTitle }} </p>
     <div class="details">
-      <p>Date: {{ garageInfo['PubDate'] }}</p>
+      <p *ngIf="garageInfo['PubDate']">Date: {{ garageInfo['PubDate'] }}</p>
     </div>
   </div>
   <div class="button-wrap">
     <button
-    mat-raised-button
+      mat-raised-button
+      [color]="active ? 'primary' : ''"
       color="primary"
       (click)="showOnMap()"
     >Show on Map</button>

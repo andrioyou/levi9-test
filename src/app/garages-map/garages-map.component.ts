@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShowGarageOnMapService } from '../show-garage-on-map.service';
+import { GaragesService } from '../garages.service';
 
 @Component({
   selector: 'app-garages-map',
@@ -7,6 +7,8 @@ import { ShowGarageOnMapService } from '../show-garage-on-map.service';
   styleUrls: ['./garages-map.component.scss']
 })
 export class GaragesMapComponent implements OnInit {
+  garage: object;
+  garageTitle: string;
   garageInfo: object;
   garageGeometry: object;
 
@@ -19,11 +21,12 @@ export class GaragesMapComponent implements OnInit {
   markerLat: number;
   markerLng: number;
 
-  constructor(private garageData: ShowGarageOnMapService) { }
+  constructor(private garageData: GaragesService) { }
 
   ngOnInit() {
     this.garageData.currentGarage.subscribe(data => {
       if (!Object.keys(data).length) return;
+      this.garage = data;
       this.garageInfo = data['properties']['layers']['parking.garage']['data'];
       this.garageGeometry = data['geometry'];
       this.setMarker();
@@ -34,6 +37,8 @@ export class GaragesMapComponent implements OnInit {
     this.markerLng = this.lng = this.garageGeometry['coordinates'][0];
     this.markerLat = this.lat = this.garageGeometry['coordinates'][1];
     this.zoom = 14;
+    this.garageTitle = this.garage['properties']['title'];
+    console.log(this.garageInfo);
   }
 
 }

@@ -9,6 +9,7 @@ import { GaragesService } from '../garages.service';
 export class GaragesListComponent implements OnInit {
   garages: object[];
   garagesAvailable: object[];
+  garagesUnavailable: object[];
 
   constructor(private garagesService: GaragesService) { }
 
@@ -17,6 +18,7 @@ export class GaragesListComponent implements OnInit {
       .subscribe((data: any) => {
         this.garages = data.features;
         this.garagesAvailable = this.garages.filter((item) => item['properties']['layers']['parking.garage']['data']['State'] == 'ok');
+        this.garagesUnavailable = this.garages.filter((item) => item['properties']['layers']['parking.garage']['data']['State'] !== 'ok');
       });
   }
 

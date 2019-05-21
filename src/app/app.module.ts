@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Services
 import { GaragesService } from './garages.service';
-import { ShowGarageOnMapService } from './show-garage-on-map.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -46,7 +45,6 @@ import { AgmCoreModule } from '@agm/core';
   ],
   providers: [
     GaragesService,
-    ShowGarageOnMapService,
   ],
   bootstrap: [AppComponent]
 })
