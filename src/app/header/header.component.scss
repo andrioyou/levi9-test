@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

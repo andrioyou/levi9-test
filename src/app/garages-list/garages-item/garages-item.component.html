@@ -1,0 +1,15 @@
+<div class="item">
+  <div class="main">
+    <p>Name: {{ garageInfo['Name'] }} </p>
+    <div class="details">
+      <p>Date: {{ garageInfo['PubDate'] }}</p>
+    </div>
+  </div>
+  <div class="button-wrap">
+    <button
+    mat-raised-button
+      color="primary"
+      (click)="showOnMap()"
+    >Show on Map</button>
+  </div>
+</div>

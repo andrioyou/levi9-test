@@ -1,0 +1,12 @@
+<mat-progress-spinner
+  *ngIf="!garages"
+  class="loader"
+  color="primary"
+  mode="indeterminate"
+  value="50">
+</mat-progress-spinner>
+<h2 class="title">Available</h2>
+<app-garages-item
+  *ngFor="let garageEl of garagesAvailable"
+  [garage]="garageEl">
+</app-garages-item>

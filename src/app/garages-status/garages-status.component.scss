@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.circle {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-right: 15px;
+  border-radius: 50%;
+
+  &.total {
+    background-color: grey;
+  }
+
+  &.available {
+    background-color: green;
+  }
+}
