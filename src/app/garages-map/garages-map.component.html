@@ -1,8 +1,23 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <agm-marker *ngIf="markerLat && markerLng" [latitude]="markerLat" [longitude]="markerLng">
-    <agm-info-window [disableAutoPan]="true" isOpen="true">
-      <h3 *ngIf="garageTitle">{{ garageTitle }}</h3>
-      <p *ngIf="garageInfo['PubDate']">{{ garageInfo['PubDate'] }}</p>
+<agm-map
+  [zoom]="zoom"
+  [fitBounds]="true"
+  maxZoom="17">
+  <agm-marker
+    *ngFor="let marker of markers"
+    [latitude]="marker['geometry']['coordinates'][1]"
+    [longitude]="marker['geometry']['coordinates'][0]"
+    [agmFitBounds]="true"
+    [iconUrl]="(marker['properties']['layers']['parking.garage']['data']['State'] == 'ok') ? markerIconActive : markerIconDisabled"
+    >
+    <agm-info-window [disableAutoPan]="true">
+      <h3 *ngIf="marker['properties']['title']">{{ marker['properties']['title'] }}</h3>
     </agm-info-window>
   </agm-marker>
 </agm-map>
+<button
+  mat-raised-button
+  color="primary"
+  [disabled]="markers.length > 1"
+  (click)="setMarkers()">
+  Show all parking garages
+</button>

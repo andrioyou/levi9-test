@@ -13,7 +13,7 @@ export class GaragesService {
   constructor(private http: HttpClient) {
 
   }
-
+  
   fetchResults(): Observable<Object> {
     return this.http.get('http://api.citysdk.waag.org/layers/parking.garage/objects?per_page=25')
   }

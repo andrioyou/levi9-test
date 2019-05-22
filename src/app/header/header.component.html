@@ -1,5 +1,13 @@
 <div class="container">
   <div class="inner">
-    <h2 class="title">Parking garages</h2>
+    <a routerLink="/" class="title">Parking garages</a>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button routerLink="/info" mat-menu-item>
+        <span>Information</span>
+      </button>
+    </mat-menu>
   </div>
 </div>

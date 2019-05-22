@@ -7,37 +7,34 @@ import { GaragesService } from '../garages.service';
   styleUrls: ['./garages-map.component.scss']
 })
 export class GaragesMapComponent implements OnInit {
+  garages: object[];
   garage: object;
-  garageTitle: string;
-  garageInfo: object;
-  garageGeometry: object;
-
-  // Amsterdam by default
-  lat: number = 52.3545653;
-  lng: number = 4.7585408;
+  markers: object[] = [];
   zoom: number = 10;
-  
-  // Marker
-  markerLat: number;
-  markerLng: number;
+  markerIconActive: string = 'assets/img/marker-active.png';
+  markerIconDisabled: string = 'assets/img/marker-disabled.png';
+  showAllButtonStatus = true;
 
   constructor(private garageData: GaragesService) { }
 
   ngOnInit() {
+    this.garageData.fetchResults().subscribe(data => {
+      this.markers = this.garages = data['features'];
+    })
     this.garageData.currentGarage.subscribe(data => {
       if (!Object.keys(data).length) return;
       this.garage = data;
-      this.garageInfo = data['properties']['layers']['parking.garage']['data'];
-      this.garageGeometry = data['geometry'];
       this.setMarker();
     })
   }
 
+  setMarkers() {
+    this.markers = this.garages;
+  }
+
   setMarker() {
-    this.markerLng = this.lng = this.garageGeometry['coordinates'][0];
-    this.markerLat = this.lat = this.garageGeometry['coordinates'][1];
-    this.zoom = 14;
-    this.garageTitle = this.garage['properties']['title'];
+    this.markers = [];
+    this.markers.push(this.garage);
   }
 
 }
